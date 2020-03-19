@@ -1,0 +1,34 @@
+a {
+  width: 100%;
+  color: white;
+  text-decoration: none;
+
+  .box-result {
+    background: url(http://via.placeholder.com/163x245?text=No+poster);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 300px;
+    box-shadow: 0;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: box-shadow 0.1s linear;
+
+    .box-details {
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      padding:0.5rem;
+    }
+  }
+
+  &:hover {
+    .box-result {
+      box-shadow: 3px 3px 5px black;
+    }
+  }
+}

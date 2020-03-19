@@ -10,6 +10,7 @@ import { PeliculaComponent } from './components/views/pelicula/pelicula.componen
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
+import { PeliculaResultComponent } from './components/shared/pelicula-result/pelicula-result.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
     NavbarComponent,
     FooterComponent,
     HeaderComponent,
+    PeliculaResultComponent,
   ],
   imports: [
     BrowserModule,
