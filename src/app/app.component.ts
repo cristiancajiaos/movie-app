@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BASICDATA } from './constants/basicData';
+import { ConfigurationService } from './services/configuration.service';
 
 @Component({
   selector: 'app-root',

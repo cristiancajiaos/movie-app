@@ -1,6 +1,12 @@
-<div class="row">
-  <div class="col-sm-4 col-12 mb-4">
-    <app-pelicula-result>
-    </app-pelicula-result>
+<div *ngIf="loading">
+  <p class="text-center"><i class="fas fa-spinner fa-spin fa-fw"></i> Cargando...</p>
+</div>
+
+<div *ngIf="!loading">
+  <div class="row">
+    <div class="col-md-4 col-sm-12 mb-4" *ngFor="let movie of movies">
+      <app-pelicula-result [movie]="movie">
+      </app-pelicula-result>
+    </div>
   </div>
 </div>
