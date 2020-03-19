@@ -33,6 +33,13 @@ export class MovieService {
       .pipe(catchError(this._handleError));
   }
 
+  getInTheatersMovies(date: string): Observable<MovieQueryResponse> {
+    return this.http
+      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=release_date.desc&with_release_type=3&release_date.lte=${date}`)
+      .pipe(catchError(this._handleError));
+
+  }
+
   private _handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

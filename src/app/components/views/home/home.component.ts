@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from 'src/app/services/movie.service';
 import { MovieResult } from 'src/app/interfaces/movie-result';
 import { ConfigurationService } from 'src/app/services/configuration.service';
+import { DateService } from 'src/app/services/date.service';
 
 @Component({
   selector: 'app-home',
@@ -22,6 +23,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
+    private dateService: DateService
   ) {
 
   }
@@ -31,6 +33,8 @@ export class HomeComponent implements OnInit {
     this.currentCategory = this.categories[0];
 
     this.getPopularMovies();
+
+    // console.log(this.dateService.getCurrentDateFormatYYYYMMDD());
   }
 
   selectYear(year: string): void {
@@ -43,14 +47,17 @@ export class HomeComponent implements OnInit {
     switch (category) {
       case 'Populares': {
         this.getPopularMovies();
+        break;
       }
 
       case 'Niños': {
         this.getKidsMovies();
+        break;
       }
 
-      default: {
-
+      case 'En cines': {
+        this.getInTheatersMovies();
+        break;
       }
     }
   }
@@ -70,6 +77,18 @@ export class HomeComponent implements OnInit {
     this.movies = [];
 
     this.movieService.getKidsMovies().subscribe(result => {
+      this.movies = result.results;
+      this.loading = false;
+    });
+  }
+
+  getInTheatersMovies(): void {
+    this.loading = true;
+    this.movies = [];
+
+    this.movieService.getInTheatersMovies(
+      this.dateService.getCurrentDateFormatYYYYMMDD()
+    ).subscribe(result => {
       this.movies = result.results;
       this.loading = false;
     });

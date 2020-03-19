@@ -8,9 +8,10 @@ export const environment = {
   tmdbApiKey: 'ebd8351b7505bd9785d1ea8ffee77e7d',
   tmdbImageBaseUrl: 'https://image.tmdb.org/t/p/',
   tmdbImageSize: 'w500/',
-  noPosterUrl: 'http://via.placeholder.com/500x750?text=No+poster',
+  noPosterUrl: 'http://via.placeholder.com/500x750?text=No+hay+poster+disponible',
   noBackdropUrl: 'http://via.placeholder.com/500x750?text=No+backdrop',
-  language: 'es-CL'
+  language: 'es-CL',
+  region: 'CL'
 };
 
 /*
