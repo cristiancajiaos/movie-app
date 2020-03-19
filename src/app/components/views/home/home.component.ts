@@ -14,7 +14,11 @@ export class HomeComponent implements OnInit {
   loading: boolean;
   movies: MovieResult[];
 
-  baseImageUrl: string;
+  years = ['2019', '2018', '2017', '2016', '2015', 'Mejores'];
+  categories = ['Populares', 'Niños', 'En cines'];
+
+  currentYear: string;
+  currentCategory: string;
 
   constructor(
     private movieService: MovieService,
@@ -27,6 +31,9 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.movies = [];
 
+    this.currentYear = this.years[0];
+    this.currentCategory = this.categories[0];
+
     this.configurationService.getConfiguration().subscribe(result => {
       console.log(result);
     });
@@ -35,6 +42,14 @@ export class HomeComponent implements OnInit {
       this.movies = result.results;
       this.loading = false;
     });
+  }
+
+  selectYear(year: string): void {
+    this.currentYear = year;
+  }
+
+  selectCategory(category: string): void {
+    this.currentCategory = category;
   }
 
 }
