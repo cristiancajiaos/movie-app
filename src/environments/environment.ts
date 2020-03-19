@@ -9,7 +9,8 @@ export const environment = {
   tmdbImageBaseUrl: 'https://image.tmdb.org/t/p/',
   tmdbImageSize: 'w500/',
   noPosterUrl: 'http://via.placeholder.com/500x750?text=No+poster',
-  noBackdropUrl: 'http://via.placeholder.com/500x750?text=No+backdrop'
+  noBackdropUrl: 'http://via.placeholder.com/500x750?text=No+backdrop',
+  language: 'es-CL'
 };
 
 /*

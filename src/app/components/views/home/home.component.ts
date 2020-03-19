@@ -22,26 +22,15 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private movieService: MovieService,
-    private configurationService: ConfigurationService
   ) {
 
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.movies = [];
-
     this.currentYear = this.years[0];
     this.currentCategory = this.categories[0];
 
-    this.configurationService.getConfiguration().subscribe(result => {
-      console.log(result);
-    });
-
-    this.movieService.getCurrentMovies().subscribe(result => {
-      this.movies = result.results;
-      this.loading = false;
-    });
+    this.getPopularMovies();
   }
 
   selectYear(year: string): void {
@@ -50,6 +39,39 @@ export class HomeComponent implements OnInit {
 
   selectCategory(category: string): void {
     this.currentCategory = category;
+
+    switch (category) {
+      case 'Populares': {
+        this.getPopularMovies();
+      }
+
+      case 'Niños': {
+        this.getKidsMovies();
+      }
+
+      default: {
+
+      }
+    }
   }
 
+  getPopularMovies(): void {
+    this.loading = true;
+    this.movies = [];
+
+    this.movieService.getCurrentMovies().subscribe(result => {
+      this.movies = result.results;
+      this.loading = false;
+    });
+  }
+
+  getKidsMovies(): void {
+    this.loading = true;
+    this.movies = [];
+
+    this.movieService.getKidsMovies().subscribe(result => {
+      this.movies = result.results;
+      this.loading = false;
+    });
+  }
 }

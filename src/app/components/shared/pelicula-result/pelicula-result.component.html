@@ -2,8 +2,8 @@
   <div class="box-result"
     [ngStyle]="{'background-image':'url(' + ((movie.poster_path) ? imageUrl + imageSize + movie.poster_path : noPosterUrl) + ')'}">
     <div class="pop">
-      <small>Popularity: {{movie.popularity}}</small>
-      <small>Votes: {{movie.vote_average | vote}}</small>
+      <small>Popularidad: {{movie.popularity}}</small>
+      <small>Calificación: {{movie.vote_average | vote}}</small>
     </div>
     <div class="box-details">
       <span>{{movie.title}}</span>

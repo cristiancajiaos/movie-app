@@ -11,17 +11,25 @@ import { environment } from 'src/environments/environment';
 export class MovieService {
   private url: string;
   private apiKey: string;
+  private language: string;
 
   constructor(
     private http: HttpClient
   ) {
     this.url = environment.tmdbBaseUrl;
     this.apiKey = environment.tmdbApiKey;
+    this.language = environment.language;
   }
 
   getCurrentMovies(): Observable<MovieQueryResponse> {
     return this.http
-      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc`)
+      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&language=${this.language}`)
+      .pipe(catchError(this._handleError));
+  }
+
+  getKidsMovies(): Observable<MovieQueryResponse> {
+    return this.http
+      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&certification_country=US&certification.lte=G&certification.gte=G&language=${this.language}`)
       .pipe(catchError(this._handleError));
   }
 
