@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { MovieQueryResponse } from '../interfaces/movie-query-response';
 import { environment } from 'src/environments/environment';
+import { NowPlayingQueryResponse } from '../interfaces/now-playing-query-response';
 
 @Injectable({
   providedIn: "root"
@@ -13,31 +14,46 @@ export class MovieService {
   private apiKey: string;
   private language: string;
 
-  constructor(
-    private http: HttpClient
-  ) {
+  constructor(private http: HttpClient) {
     this.url = environment.tmdbBaseUrl;
     this.apiKey = environment.tmdbApiKey;
     this.language = environment.language;
   }
 
-  getCurrentMovies(): Observable<MovieQueryResponse> {
+  getPopularMovies(): Observable<MovieQueryResponse> {
     return this.http
-      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&language=${this.language}`)
+      .get<MovieQueryResponse>(
+        `${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&language=${this.language}`
+      )
       .pipe(catchError(this._handleError));
   }
 
-  getKidsMovies(): Observable<MovieQueryResponse> {
+  getKidsMovies(
+  ): Observable<MovieQueryResponse> {
     return this.http
-      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&certification_country=US&certification.lte=G&certification.gte=G&language=${this.language}`)
+      .get<MovieQueryResponse>(
+        `${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&certification_country=US&certification.lte=PG&certification.gte=G&language=${this.language}`
+      )
       .pipe(catchError(this._handleError));
   }
 
-  getInTheatersMovies(date: string): Observable<MovieQueryResponse> {
+  getNowPlayingMovies(): Observable<NowPlayingQueryResponse> {
     return this.http
-      .get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=release_date.desc&with_release_type=3&release_date.lte=${date}`)
+      .get<NowPlayingQueryResponse>(`${this.url}/movie/now_playing?api_key=${this.apiKey}&language=${this.language}`)
       .pipe(catchError(this._handleError));
+  }
 
+  getMoviesByYear(year: number): Observable<MovieQueryResponse> {
+    return this.http
+      .get<MovieQueryResponse>(
+        `${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&language=${this.language}&primary_release_year=${year}`
+      )
+      .pipe(catchError(this._handleError));
+  }
+
+  getBestOfYearsMovies(): Observable<MovieQueryResponse> {
+    return this.http.get<MovieQueryResponse>(`${this.url}/discover/movie?api_key=${this.apiKey}&sort_by=popularity.desc&release_date.gte=2015-01-01&release_date.lte=2019-12-31`)
+      .pipe(catchError(this._handleError));
   }
 
   private _handleError(error: HttpErrorResponse) {
