@@ -1,0 +1,18 @@
+<div *ngIf="loading">
+  <p class="text-center"><i class="fas fa-spinner fa-spin fa-fw"></i> Cargando...</p>
+</div>
+
+<div *ngIf="!loading">
+  <div *ngIf="!movies">
+    <p>No se encontraron películas con las características señaladas</p>
+  </div>
+
+  <div *ngIf="movies">
+    <div class="row">
+      <div class="col-md-4 col-sm-12 mb-4" *ngFor="let movie of movies | limitTo:9">
+        <app-pelicula-result [movie]="movie">
+        </app-pelicula-result>
+      </div>
+    </div>
+  </div>
+</div>

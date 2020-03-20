@@ -16,6 +16,11 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { PeliculaResultComponent } from './components/shared/pelicula-result/pelicula-result.component';
 import { LimitToPipe } from './pipes/limit-to.pipe';
 import { VotePipe } from './pipes/vote.pipe';
+import { PopularComponent } from './components/views/popular/popular.component';
+import { KidsComponent } from './components/views/kids/kids.component';
+import { NowPlayingComponent } from './components/views/now-playing/now-playing.component';
+import { YearComponent } from './components/views/year/year.component';
+import { BestOfComponent } from './components/views/best-of/best-of.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +33,11 @@ import { VotePipe } from './pipes/vote.pipe';
     PeliculaResultComponent,
     LimitToPipe,
     VotePipe,
+    PopularComponent,
+    KidsComponent,
+    NowPlayingComponent,
+    YearComponent,
+    BestOfComponent,
   ],
   imports: [
     BrowserModule,
