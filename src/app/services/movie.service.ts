@@ -59,7 +59,7 @@ export class MovieService {
   searchMovies(query: string): Observable<MovieQueryResponse> {
     query = query.replace(/\s/, '%20');
     return this.http
-      .get<MovieQueryResponse>(`${this.url}/search/movie?api_key=${this.apiKey}&query=${query}`)
+      .get<MovieQueryResponse>(`${this.url}/search/movie?api_key=${this.apiKey}&query=${query}&language=${this.language}`)
       .pipe(catchError(this._handleError));
   }
 
