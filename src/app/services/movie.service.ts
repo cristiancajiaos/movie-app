@@ -56,6 +56,13 @@ export class MovieService {
       .pipe(catchError(this._handleError));
   }
 
+  searchMovies(query: string): Observable<MovieQueryResponse> {
+    query = query.replace(/\s/, '%20');
+    return this.http
+      .get<MovieQueryResponse>(`${this.url}/search/movie?api_key=${this.apiKey}&query=${query}`)
+      .pipe(catchError(this._handleError));
+  }
+
   private _handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
