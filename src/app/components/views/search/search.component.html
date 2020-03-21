@@ -1,0 +1,18 @@
+<div *ngIf="loading">
+
+</div>
+
+<div *ngIf="!loading">
+  <h1><i class="fas fa-search fa-fw"></i>Búsqueda: {{query}}</h1>
+
+  <hr/>
+
+  <div class="row">
+    <div class="col-md-4 col-sm-12 mb-4" *ngFor="let movie of movies | limitTo: 9">
+      <app-pelicula-result [movie]="movie">
+      </app-pelicula-result>
+    </div>
+  </div>
+</div>
+
+
