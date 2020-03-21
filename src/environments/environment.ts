@@ -10,6 +10,7 @@ export const environment = {
   tmdbImageSize: 'w500/',
   noPosterUrl: 'http://via.placeholder.com/500x750?text=No+hay+poster+disponible',
   noBackdropUrl: 'http://via.placeholder.com/500x750?text=No+backdrop',
+  imdbTitleUrl: 'https://imdb.com/title/',
   language: 'es-CL',
   region: 'CL'
 };
