@@ -8,9 +8,11 @@ export const environment = {
   tmdbApiKey: 'ebd8351b7505bd9785d1ea8ffee77e7d',
   tmdbImageBaseUrl: 'https://image.tmdb.org/t/p/',
   tmdbImageSize: 'w500/',
+  tmdbBackdropSize: 'w780/',
   noPosterUrl: 'http://via.placeholder.com/500x750?text=No+hay+poster+disponible',
   noBackdropUrl: 'http://via.placeholder.com/500x750?text=No+backdrop',
   imdbTitleUrl: 'https://imdb.com/title/',
+  youTubeUrl: 'https://www.youtube.com/watch?v=',
   language: 'es-CL',
   region: 'CL'
 };
