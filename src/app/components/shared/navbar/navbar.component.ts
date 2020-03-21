@@ -8,6 +8,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class NavbarComponent implements OnInit {
   @Output() searchQuery = new EventEmitter<string>();
+  isCollapsed: boolean;
 
   searchForm = new FormGroup({
     searchQuery: new FormControl('')
@@ -17,6 +18,11 @@ export class NavbarComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isCollapsed = true;
+  }
+
+  changeCollapsed(): void {
+    this.isCollapsed = !this.isCollapsed;
   }
 
   sendQuery(): void {

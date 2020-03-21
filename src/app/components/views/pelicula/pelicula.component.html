@@ -4,23 +4,40 @@
 
 <div *ngIf="!loading" class="mb-4">
   <header
-    [ngStyle]="{'background-image':'url(' + (movie.backdrop_path ? tmdbImageBaseUrl + tmdbImageSize + movie.backdrop_path : noBackdropUrl) + ')'}">
+    [ngStyle]="{'background-image':'url(' + (movie.backdrop_path ? tmdbImageBaseUrl + tmdbBackdropSize + movie.backdrop_path : noBackdropUrl) + ')'}">
     <div class="movie-title">
       <h1>{{movie.title}} <small>({{date.getFullYear()}})</small></h1>
     </div>
   </header>
+
+  <hr/>
 
   <main>
     <div class="row">
       <div class="col-md-3 col-sm-12">
         <div class="movie-details">
           <div class="movie-detail">
-            <strong>Título Original</strong>
+            <strong>Título original:</strong>
             <span>{{movie.original_title}}</span>
           </div>
+          <hr />
           <div class="movie-detail">
-            <strong>Fecha de lanzamiento original</strong>
+            <strong>Fecha de lanzamiento original:</strong>
             <span>{{movie.release_date | date:'dd/MM/yyyy'}}</span>
+          </div>
+          <hr />
+          <div class="movie-detail">
+            <strong>Géneros:</strong>
+            <span *ngFor="let genre of movie.genres">
+              {{genre.name}}
+            </span>
+          </div>
+          <hr />
+          <div class="movie-detail">
+            <strong>Compañías productoras:</strong>
+            <span *ngFor="let productionCompany of movie.production_companies">
+              {{productionCompany.name}}
+            </span>
           </div>
         </div>
       </div>
@@ -28,14 +45,29 @@
         <div class="movie-description">
           <p>{{movie.overview}}</p>
         </div>
+        <hr/>
+        <div class="movie-video">
+          <div *ngIf="!videoEmbed">
+            <img src="https://via.placeholder.com/750x400?text=No+hay+video+disponible" class="img-fluid"/>
+          </div>
+          <div *ngIf="videoEmbed">
+            <div class="embed-responsive embed-responsive-16by9">
+              <div [innerHTML]="videoEmbed">
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+
       </div>
       <div class="col-md-3 col-sm-12">
         <aside>
           <div class="movie-links">
             <div *ngIf="movie.imdb_id">
-               <a href="{{imdbTitleUrl + movie.imdb_id}}" class="btn btn-primary btn-block mb-2" target="_blank">
-                 <i class="fab fa-imdb fa-fw"></i> IMDB
-               </a>
+              <a href="{{imdbTitleUrl + movie.imdb_id}}" class="btn btn-primary btn-block mb-2" target="_blank">
+                <i class="fab fa-imdb fa-fw"></i> IMDB
+              </a>
             </div>
             <div *ngIf="movie.homepage">
               <a [href]="movie.homepage" class="btn btn-primary btn-block" target="_blank">
@@ -47,12 +79,13 @@
           <div class="movie-rankings">
             <ngb-rating [rate]="movie.vote_average" [readonly]="true"></ngb-rating>
             | <strong>{{movie.vote_average | vote}}</strong>
-            <br/>
+            <br />
             <small>Basado en {{movie.vote_count}} votos</small>
           </div>
-          <hr/>
+          <hr />
           <div class="movie-poster">
-            <img src="{{movie.poster_path ? tmdbImageBaseUrl + tmdbImageSize +  movie.poster_path : noPosterUrl}}" title="{{'Poster de ' + movie.title}}" class="img-fluid" />
+            <img src="{{movie.poster_path ? tmdbImageBaseUrl + tmdbImageSize +  movie.poster_path : noPosterUrl}}"
+              title="{{'Poster de ' + movie.title}}" class="img-fluid" />
           </div>
         </aside>
       </div>

@@ -6,6 +6,7 @@ import { MovieQueryResponse } from '../interfaces/movie-query-response';
 import { environment } from 'src/environments/environment';
 import { NowPlayingQueryResponse } from '../interfaces/now-playing-query-response';
 import { Movie } from '../interfaces/movie';
+import { MovieVideoQueryResponse } from '../interfaces/movie-video-query-response';
 
 @Injectable({
   providedIn: "root"
@@ -67,6 +68,12 @@ export class MovieService {
   getMovie(id: number): Observable<Movie> {
     return this.http
       .get<Movie>(`${this.url}/movie/${id}?api_key=${this.apiKey}&language=${this.language}`)
+      .pipe(catchError(this._handleError));
+  }
+
+  getMovieVideos(id: number): Observable<MovieVideoQueryResponse> {
+    return this.http
+      .get<MovieVideoQueryResponse>(`${this.url}/movie/${id}/videos?api_key=${this.apiKey}&language=${this.language}`)
       .pipe(catchError(this._handleError));
   }
 

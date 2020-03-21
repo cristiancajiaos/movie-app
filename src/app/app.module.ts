@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { EmbedVideo } from 'ngx-embed-video';
 
 /* Componentes */
 import { AppComponent } from './app.component';
@@ -17,8 +18,6 @@ import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { PeliculaResultComponent } from './components/shared/pelicula-result/pelicula-result.component';
-import { LimitToPipe } from './pipes/limit-to.pipe';
-import { VotePipe } from './pipes/vote.pipe';
 import { PopularComponent } from './components/views/popular/popular.component';
 import { KidsComponent } from './components/views/kids/kids.component';
 import { NowPlayingComponent } from './components/views/now-playing/now-playing.component';
@@ -26,6 +25,9 @@ import { YearComponent } from './components/views/year/year.component';
 import { BestOfComponent } from './components/views/best-of/best-of.component';
 import { SearchComponent } from './components/views/search/search.component';
 
+/* Pipes */
+import { LimitToPipe } from './pipes/limit-to.pipe';
+import { VotePipe } from './pipes/vote.pipe';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,8 @@ import { SearchComponent } from './components/views/search/search.component';
     FormsModule,
     ReactiveFormsModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    EmbedVideo.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
