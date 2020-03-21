@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+  @Output() searchQuery = new EventEmitter<string>();
 
-  constructor() { }
+  searchForm = new FormGroup({
+    searchQuery: new FormControl('')
+  });
+
+  constructor(
+  ) { }
 
   ngOnInit() {
   }
 
+  sendQuery(): void {
+    const query = this.searchForm.value.searchQuery;
+    this.searchQuery.emit(query);
+  }
 }

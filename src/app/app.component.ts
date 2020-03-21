@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BASICDATA } from './constants/basicData';
-import { ConfigurationService } from './services/configuration.service';
+import { Location } from '@angular/common';
+import { Router, Route, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: "app-root",
@@ -11,6 +12,17 @@ export class AppComponent {
   title = BASICDATA.title;
   author = BASICDATA.autor;
 
-  years = ["2019", "2018", "2017", "2016", "2015", "Mejores"];
-  categories = ["Populares", "Niños", "En cines"];
+  constructor(
+    private location: Location,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+
+  }
+
+  onSearchQuery(query: string): void {
+    console.log('onsearchquery');
+    console.log(this.activatedRoute);
+    this.router.navigate(['/search', query]);
+  }
 }

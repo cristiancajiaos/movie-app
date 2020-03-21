@@ -7,6 +7,7 @@ import { KidsComponent } from './components/views/kids/kids.component';
 import { NowPlayingComponent } from './components/views/now-playing/now-playing.component';
 import { YearComponent } from './components/views/year/year.component';
 import { BestOfComponent } from './components/views/best-of/best-of.component';
+import { SearchComponent } from './components/views/search/search.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'movie', component: PeliculaComponent },
   { path: 'year/:id', component: YearComponent },
   { path: 'bestof', component: BestOfComponent },
-  { path: 'home', redirectTo: '/home/popular', pathMatch: 'full' }
+  { path: 'search/:query', component: SearchComponent},
+  { path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({

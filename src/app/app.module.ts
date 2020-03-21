@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 /* Componentes */
 import { AppComponent } from './app.component';
@@ -21,6 +22,8 @@ import { KidsComponent } from './components/views/kids/kids.component';
 import { NowPlayingComponent } from './components/views/now-playing/now-playing.component';
 import { YearComponent } from './components/views/year/year.component';
 import { BestOfComponent } from './components/views/best-of/best-of.component';
+import { SearchComponent } from './components/views/search/search.component';
+
 
 @NgModule({
   declarations: [
@@ -38,12 +41,15 @@ import { BestOfComponent } from './components/views/best-of/best-of.component';
     NowPlayingComponent,
     YearComponent,
     BestOfComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
