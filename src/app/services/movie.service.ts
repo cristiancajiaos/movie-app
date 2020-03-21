@@ -5,6 +5,7 @@ import { catchError } from 'rxjs/operators';
 import { MovieQueryResponse } from '../interfaces/movie-query-response';
 import { environment } from 'src/environments/environment';
 import { NowPlayingQueryResponse } from '../interfaces/now-playing-query-response';
+import { Movie } from '../interfaces/movie';
 
 @Injectable({
   providedIn: "root"
@@ -60,6 +61,12 @@ export class MovieService {
     query = query.replace(/\s/, '%20');
     return this.http
       .get<MovieQueryResponse>(`${this.url}/search/movie?api_key=${this.apiKey}&query=${query}&language=${this.language}`)
+      .pipe(catchError(this._handleError));
+  }
+
+  getMovie(id: number): Observable<Movie> {
+    return this.http
+      .get<Movie>(`${this.url}/movie/${id}?api_key=${this.apiKey}&language=${this.language}`)
       .pipe(catchError(this._handleError));
   }
 

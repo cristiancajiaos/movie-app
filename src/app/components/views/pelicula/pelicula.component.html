@@ -1,1 +1,65 @@
-<p>pelicula works!</p>
+<div *ngIf="loading" class="mb-4">
+  <i class="fas fa-spinner fa-spin fa-fw"></i> Cargando...
+</div>
+
+<div *ngIf="!loading" class="mb-4">
+  <header
+    [ngStyle]="{'background-image':'url(' + (movie.backdrop_path ? tmdbImageBaseUrl + tmdbImageSize + movie.backdrop_path : noBackdropUrl) + ')'}">
+    <div class="movie-title">
+      <h1>{{movie.title}} <small>({{date.getFullYear()}})</small></h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="row">
+      <div class="col-md-3 col-sm-12">
+        <div class="movie-details">
+          <div class="movie-detail">
+            <strong>Título Original</strong>
+            <span>{{movie.original_title}}</span>
+          </div>
+          <div class="movie-detail">
+            <strong>Fecha de lanzamiento original</strong>
+            <span>{{movie.release_date | date:'dd/MM/yyyy'}}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="movie-description">
+          <p>{{movie.overview}}</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <aside>
+          <div class="movie-links">
+            <div *ngIf="movie.imdb_id">
+               <a href="{{imdbTitleUrl + movie.imdb_id}}" class="btn btn-primary btn-block mb-2" target="_blank">
+                 <i class="fab fa-imdb fa-fw"></i> IMDB
+               </a>
+            </div>
+            <div *ngIf="movie.homepage">
+              <a [href]="movie.homepage" class="btn btn-primary btn-block" target="_blank">
+                <i class="fas fa-globe fa-fw"></i> Página web
+              </a>
+            </div>
+          </div>
+          <hr />
+          <div class="movie-rankings">
+            <ngb-rating [rate]="movie.vote_average" [readonly]="true"></ngb-rating>
+            | <strong>{{movie.vote_average | vote}}</strong>
+            <br/>
+            <small>Basado en {{movie.vote_count}} votos</small>
+          </div>
+          <hr/>
+          <div class="movie-poster">
+            <img src="{{movie.poster_path ? tmdbImageBaseUrl + tmdbImageSize +  movie.poster_path : noPosterUrl}}" title="{{'Poster de ' + movie.title}}" class="img-fluid" />
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+
+<button class="btn btn-primary btn-block" [routerLink]="['/home']">
+  <i class="fas fa-chevron-circle-left"></i> Volver al Home
+</button>

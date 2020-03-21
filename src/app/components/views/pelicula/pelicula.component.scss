@@ -1,0 +1,43 @@
+
+header {
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+  box-shadow: 3px 3px 5px black;
+  background-size: cover;
+  background-position: center;
+
+  .movie-title {
+    padding: 1rem;
+    background-color: rgba(0,0,0,0.75);
+    color:white;
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+main {
+  .movie-details {
+    & .movie-detail {
+      margin-bottom: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
+
+aside {
+  & > * {
+    text-align: center;
+  }
+
+  .movie-links {
+    a {
+      color: white;
+    }
+  }
+}

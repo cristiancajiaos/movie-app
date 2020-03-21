@@ -17,14 +17,14 @@ const routes: Routes = [
     children: [
       { path: 'popular', component: PopularComponent },
       { path: 'kids', component: KidsComponent },
-      { path: 'nowplaying', component: NowPlayingComponent }
+      { path: 'nowplaying', component: NowPlayingComponent },
+      { path: 'year/:id', component: YearComponent },
+      { path: 'bestof', component: BestOfComponent }
     ]
   },
-  { path: 'movie', component: PeliculaComponent },
-  { path: 'year/:id', component: YearComponent },
-  { path: 'bestof', component: BestOfComponent },
-  { path: 'search/:query', component: SearchComponent},
-  { path: '**', redirectTo: 'home', pathMatch: 'full'}
+  { path: 'movie/:id', component: PeliculaComponent },
+  { path: 'search/:query', component: SearchComponent },
+  { path: '**', redirectTo: 'home', pathMatch: 'full' }
 ];
 
 @NgModule({
