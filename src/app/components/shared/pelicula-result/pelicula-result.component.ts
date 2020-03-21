@@ -9,6 +9,7 @@ import { environment } from './../../../../environments/environment';
 })
 export class PeliculaResultComponent implements OnInit {
   @Input() movie: MovieResult;
+  date: Date;
   imageUrl: string;
   imageSize: string;
   noPosterUrl: string;
@@ -17,6 +18,7 @@ export class PeliculaResultComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.date = new Date(this.movie.release_date);
     this.imageUrl = environment.tmdbImageBaseUrl;
     this.imageSize = environment.tmdbImageSize;
     this.noPosterUrl = environment.noPosterUrl;
