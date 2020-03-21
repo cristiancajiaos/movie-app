@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
       this.query = params.query;
 
       this.movieService.searchMovies(this.query).subscribe(result => {
+        console.log(result);
         this.movies = result.results;
         this.loading = false;
       });
