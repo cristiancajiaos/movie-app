@@ -1,4 +1,4 @@
-<a href="#" title="{{movie.title + ' (' + movie.release_date.slice(0,4) + ')'}}">
+<a href="#" [routerLink]="['/movie', movie.id]" title="{{movie.title + ' (' + movie.release_date.slice(0,4) + ')'}}">
   <div class="box-result"
     [ngStyle]="{'background-image':'url(' + ((movie.poster_path) ? imageUrl + imageSize + movie.poster_path : noPosterUrl) + ')'}">
     <div class="pop">

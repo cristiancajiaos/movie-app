@@ -1,1 +1,61 @@
-<p>pelicula works!</p>
+<div *ngIf="loading" class="mb-4">
+  <i class="fas fa-spinner fa-spin fa-fw"></i> Cargando...
+</div>
+
+<div *ngIf="!loading" class="mb-4">
+  <header>
+    <div class="movie-title">
+      <h1>Title <small>(year)</small></h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="row">
+      <div class="col-md-3 col-sm-12">
+        <div class="movie-details">
+          <div class="movie-detail">
+            <strong>Título Original</strong>
+            <span>Título Original</span>
+          </div>
+          <div class="movie-detail">
+            <strong>Fecha de Lanzamiento Original</strong>
+            <span>MM/DD/YYYY</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="movie-description">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum convallis consectetur nulla, non tempus
+            mauris imperdiet vitae. Donec vel vestibulum velit. Praesent vel imperdiet mi, non lacinia quam. Donec sed
+            metus sed urna varius aliquam. Pellentesque eget sapien consequat, commodo metus in, congue libero. Integer
+            ac diam vitae felis ultricies interdum. Vivamus eu elit vel urna volutpat vehicula nec id mauris. Aenean
+            tempor in tellus a rutrum. Aenean vehicula purus ut augue faucibus, id laoreet sapien tincidunt. Maecenas
+            sed porttitor sem.</p>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-12">
+        <aside>
+          <div class="movie-links">
+            <a href="#" class="btn btn-primary btn-block"><i class="fab fa-imdb fa-fw"></i> IMDB</a>
+            <a href="#" class="btn btn-primary btn-block"><i class="fas fa-globe fa-fw"></i> Página web</a>
+          </div>
+          <hr />
+          <div class="movie-rankings">
+            <strong>X.X / 10</strong>
+            <br/>
+            <small>Basado en X votes</small>
+          </div>
+          <hr/>
+          <div class="movie-poster">
+            <img src="https://via.placeholder.com/500x750" class="img-fluid" />
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+
+<button class="btn btn-primary btn-block">
+  <i class="fas fa-chevron-circle-left"></i> Volver al Home
+</button>

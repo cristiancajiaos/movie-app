@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: 'nowplaying', component: NowPlayingComponent }
     ]
   },
-  { path: 'movie', component: PeliculaComponent },
+  { path: 'movie/:id', component: PeliculaComponent },
   { path: 'year/:id', component: YearComponent },
   { path: 'bestof', component: BestOfComponent },
   { path: 'search/:query', component: SearchComponent},

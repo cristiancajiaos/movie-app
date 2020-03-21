@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pelicula',
@@ -6,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pelicula.component.scss']
 })
 export class PeliculaComponent implements OnInit {
+  loading: boolean;
 
-  constructor() { }
+  constructor(
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit() {
+    this.loading = true;
+
+    this.activatedRoute.params.subscribe(params => {
+      const id = params.id;
+
+      this.loading = false;
+    });
   }
 
 }
