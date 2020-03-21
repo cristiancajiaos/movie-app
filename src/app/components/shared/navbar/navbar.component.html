@@ -2,16 +2,21 @@
   <a class="navbar-brand" href="#" [routerLink]="['/']">
     PeliculasApp
   </a>
-  <form [formGroup]="searchForm" class="form-inline ml-auto" (ngSubmit)="sendQuery()">
-    <div class="form-group">
-      <div class="input-group">
-         <input class="form-control" type="search" placeholder="Título" formControlName="searchQuery" required/>
-         <div class="input-group-append">
-           <button type="submit" class="btn btn-outline-secondary">
-             <i class="fas fa-search fa-fw"></i>
-           </button>
-         </div>
-      </div>
+  <button class="navbar-toggler" (click)="changeCollapsed()">
+    <i class="fas fa-bars fa-fw"></i>
+  </button>
+  <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
+    <div class="ml-auto">
+      <form [formGroup]="searchForm" class="form-inline my-lg-0" (ngSubmit)="sendQuery()">
+        <div class="input-group">
+           <input class="form-control" type="search" placeholder="Título" formControlName="searchQuery" required />
+           <span class="input-group-prepend">
+            <button type="submit" class="btn btn-outline-secondary">
+              <i class="fas fa-search fa-fw"></i>
+            </button>
+           </span>
+        </div>
+      </form>
     </div>
-  </form>
+  </div>
 </nav>
