@@ -28,6 +28,7 @@ import { SearchComponent } from './components/views/search/search.component';
 /* Pipes */
 import { LimitToPipe } from './pipes/limit-to.pipe';
 import { VotePipe } from './pipes/vote.pipe';
+import { HMinPipe } from './pipes/h-min.pipe';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { VotePipe } from './pipes/vote.pipe';
     YearComponent,
     BestOfComponent,
     SearchComponent,
+    HMinPipe,
   ],
   imports: [
     BrowserModule,
