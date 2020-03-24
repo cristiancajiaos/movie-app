@@ -27,6 +27,11 @@
           </div>
           <hr />
           <div class="movie-detail">
+            <strong>Duración:</strong>
+            <span>{{movie.runtime | hMin}}</span>
+          </div>
+          <hr />
+          <div class="movie-detail">
             <strong>Géneros:</strong>
             <span *ngFor="let genre of movie.genres">
               {{genre.name}}
@@ -34,10 +39,37 @@
           </div>
           <hr />
           <div class="movie-detail">
-            <strong>Compañías productoras:</strong>
+            <strong *ngIf="movie.spoken_languages.length == 1">Idioma:</strong>
+            <strong *ngIf="movie.spoken_languages.length > 1">Idiomas:</strong>
+            <span *ngFor="let spokenLanguage of movie.spoken_languages">
+              {{spokenLanguage.name}}
+            </span>
+          </div>
+          <hr/>
+          <div class="movie-detail">
+            <strong *ngIf="movie.production_countries.length == 1">País:</strong>
+            <strong *ngIf="movie.production_countries.length > 1">Países:</strong>
+            <span *ngFor="let productionCountry of movie.production_countries">
+              {{productionCountry.name}}
+            </span>
+          </div>
+          <hr />
+          <div class="movie-detail">
+            <strong *ngIf="movie.production_companies.length == 1">Compañía productoras:</strong>
+            <strong *ngIf="movie.production_companies.length > 1">Companías productoras:</strong>
             <span *ngFor="let productionCompany of movie.production_companies">
               {{productionCompany.name}}
             </span>
+          </div>
+          <hr/>
+          <div class="movie-detail">
+            <strong>Presupuesto (USD):</strong>
+            <span>{{movie.budget | currency:'USD'}}</span>
+          </div>
+          <hr/>
+          <div class="movie-detail">
+            <strong>Recaudación mundial (USD):</strong>
+            <span>{{movie.revenue | currency:'USD'}}</span>
           </div>
         </div>
       </div>
@@ -87,6 +119,7 @@
             <img src="{{movie.poster_path ? tmdbImageBaseUrl + tmdbImageSize +  movie.poster_path : noPosterUrl}}"
               title="{{'Poster de ' + movie.title}}" class="img-fluid" />
           </div>
+          <hr/>
         </aside>
       </div>
     </div>

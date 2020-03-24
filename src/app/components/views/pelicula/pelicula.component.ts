@@ -61,8 +61,6 @@ export class PeliculaComponent implements OnInit {
       });
 
       this.movieService.getMovieVideos(id).subscribe(result => {
-        console.log(result);
-
         if (result.results.length > 0) {
           this.videoKey = result.results[0].key;
           this.videoEmbed = this.embedService.embed_youtube(this.videoKey);
